@@ -8,8 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CBLManager;
+@class CBLDatabase;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (IBAction)createDoc:(id)sender;
+- (IBAction)sync:(id)sender;
 @end

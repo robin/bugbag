@@ -18,6 +18,13 @@
 		00A9584B18DE90F2003D629C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9582A18DE90F2003D629C /* Cocoa.framework */; };
 		00A9585318DE90F2003D629C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00A9585118DE90F2003D629C /* InfoPlist.strings */; };
 		00A9585518DE90F2003D629C /* bugbagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A9585418DE90F2003D629C /* bugbagTests.m */; };
+		00A9585F18DE914D003D629C /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9585E18DE914D003D629C /* CouchbaseLite.framework */; };
+		00A9586218DE920F003D629C /* CouchbaseLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00A9585E18DE914D003D629C /* CouchbaseLite.framework */; };
+		00A9586418DE92DF003D629C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9586318DE92DF003D629C /* CFNetwork.framework */; };
+		00A9586618DE92E7003D629C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9586518DE92E7003D629C /* Security.framework */; };
+		00A9586818DE92EF003D629C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9586718DE92EF003D629C /* SystemConfiguration.framework */; };
+		00A9586A18DE92F6003D629C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9586918DE92F6003D629C /* libsqlite3.dylib */; };
+		00A9586C18DE92FA003D629C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A9586B18DE92FA003D629C /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +36,19 @@
 			remoteInfo = bugbag;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		00A9586118DE9202003D629C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				00A9586218DE920F003D629C /* CouchbaseLite.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00A9582718DE90F2003D629C /* bugbag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bugbag.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +70,12 @@
 		00A9585018DE90F2003D629C /* bugbagTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bugbagTests-Info.plist"; sourceTree = "<group>"; };
 		00A9585218DE90F2003D629C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00A9585418DE90F2003D629C /* bugbagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bugbagTests.m; sourceTree = "<group>"; };
+		00A9585E18DE914D003D629C /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLite.framework; path = Frameworks/CouchbaseLite.framework; sourceTree = "<group>"; };
+		00A9586318DE92DF003D629C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		00A9586518DE92E7003D629C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		00A9586718DE92EF003D629C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		00A9586918DE92F6003D629C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		00A9586B18DE92FA003D629C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +83,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A9586C18DE92FA003D629C /* libz.dylib in Frameworks */,
+				00A9586A18DE92F6003D629C /* libsqlite3.dylib in Frameworks */,
+				00A9586818DE92EF003D629C /* SystemConfiguration.framework in Frameworks */,
+				00A9586618DE92E7003D629C /* Security.framework in Frameworks */,
+				00A9586418DE92DF003D629C /* CFNetwork.framework in Frameworks */,
+				00A9585F18DE914D003D629C /* CouchbaseLite.framework in Frameworks */,
 				00A9582B18DE90F2003D629C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +127,12 @@
 		00A9582918DE90F2003D629C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00A9586B18DE92FA003D629C /* libz.dylib */,
+				00A9586918DE92F6003D629C /* libsqlite3.dylib */,
+				00A9586718DE92EF003D629C /* SystemConfiguration.framework */,
+				00A9586518DE92E7003D629C /* Security.framework */,
+				00A9586318DE92DF003D629C /* CFNetwork.framework */,
+				00A9585E18DE914D003D629C /* CouchbaseLite.framework */,
 				00A9582A18DE90F2003D629C /* Cocoa.framework */,
 				00A9584918DE90F2003D629C /* XCTest.framework */,
 				00A9582C18DE90F2003D629C /* Other Frameworks */,
@@ -164,6 +202,7 @@
 				00A9582318DE90F2003D629C /* Sources */,
 				00A9582418DE90F2003D629C /* Frameworks */,
 				00A9582518DE90F2003D629C /* Resources */,
+				00A9586118DE9202003D629C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -386,9 +425,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bugbag/bugbag-Prefix.pch";
 				INFOPLIST_FILE = "bugbag/bugbag-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,9 +444,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bugbag/bugbag-Prefix.pch";
 				INFOPLIST_FILE = "bugbag/bugbag-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
