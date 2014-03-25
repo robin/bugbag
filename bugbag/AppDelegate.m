@@ -22,14 +22,10 @@
     NSURL *url = [NSURL URLWithString:@"http://test:abc123@localhost:4984/test"];
     
     CBLReplication *pusher1 = [database1 createPushReplication:url];
-    CBLReplication *puller1 = [database1 createPullReplication:url];
     pusher1.continuous = false;
-    puller1.continuous = false;
     
     CBLReplication *pusher2 = [database2 createPushReplication:url];
-    CBLReplication *puller2 = [database2 createPullReplication:url];
     pusher2.continuous = false;
-    puller2.continuous = false;
 
     NSString *docID = @"lost";
     CBLDocument *doc1;
@@ -53,26 +49,7 @@
     // sync
     [self runReplication:pusher1];
     [self runReplication:pusher2];
-    [self runReplication:puller1];
     
-    // resolve conflict
-    NSArray *conflicts;
-    error = nil;
-    conflicts = [doc1 getConflictingRevisions:&error];
-    if (error) {
-        NSLog(@"ERROR:%@", error);
-        return;
-    }
-    for (CBLSavedRevision *rev in conflicts) {
-        if (![rev.revisionID isEqualToString:docProperty1[@"_rev"]] ) {
-            error = nil;
-            [rev deleteDocument:&error];
-            if (error) {
-                NSLog(@"ERROR:%@", error);
-                return;
-            }
-        }
-    }
     docProperty1[@"key"] = @"v2.1";
     [doc1 putProperties:docProperty1 error:nil];
     docProperty1 = [doc1.properties mutableCopy];
@@ -85,39 +62,30 @@
     docProperty2[@"key"] = @"3.2";
     [doc2 putProperties:docProperty2 error:nil];
     docProperty2 = [doc2.properties mutableCopy];
-    [self runReplication:puller2];
     
     // resolve conflict again
-    error = nil;
-    conflicts = [doc2 getConflictingRevisions:&error];
-    if (error) {
-        NSLog(@"ERROR:%@", error);
-        return;
-    }
-    for (CBLSavedRevision *rev in conflicts) {
-        if (![rev.revisionID isEqualToString:docProperty2[@"_rev"]] ) {
-            error = nil;
-            [rev deleteDocument:&error];
-            if (error) {
-                NSLog(@"ERROR:%@", error);
-                return;
-            }
-        }
-    }
     [self runReplication:pusher2];
 }
 
 - (IBAction)sync:(id)sender {
-    CBLDatabase *database = [[CBLManager sharedInstance] databaseNamed:@"test3" error:nil];
+    CBLDatabase *database1 = [[CBLManager sharedInstance] databaseNamed:@"test1" error:nil];
+    CBLDatabase *database2 = [[CBLManager sharedInstance] databaseNamed:@"test2" error:nil];
+    CBLDatabase *database3 = [[CBLManager sharedInstance] databaseNamed:@"test3" error:nil];
     NSURL *url = [NSURL URLWithString:@"http://test:abc123@localhost:4984/test"];
-    CBLReplication *puller = [database createPullReplication:url];
-    [puller start];
+    CBLReplication *puller1 = [database1 createPullReplication:url];
+    CBLReplication *puller2 = [database2 createPullReplication:url];
+    CBLReplication *puller3 = [database3 createPullReplication:url];
+    [self runReplication:puller1];
+    [self runReplication:puller2];
+    [self runReplication:puller3];
 }
 
 - (void)runReplication:(CBLReplication*)repl
 {
     [repl start];
     NSDate* timeout = [NSDate dateWithTimeIntervalSinceNow: 2];
+    [[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode
+                             beforeDate: timeout];
     while (repl.running) {
         if (![[NSRunLoop currentRunLoop] runMode: NSDefaultRunLoopMode
                                      beforeDate: timeout]) {
